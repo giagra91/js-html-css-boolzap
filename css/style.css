@@ -15,14 +15,91 @@ main{
 section#app{
     width: 960px;
     height: 90vh;
-    background-color: blue;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 div.header{
-    height: 8%;
+    height: 8vh;
     background-color: rgb(234, 234, 234);
     
+}
+
+div#aside-messages{
+    height: 82vh;
+}
+
+div#main-messages{
+    height: 82vh;
+    background-image: url(../img/mine.jpg);
+    border-right: 7px solid rgb(234, 234, 234);
+}
+div#main-footer{
+    height: 8vh;
+    background-color: rgb(234, 234, 234);
+}
+
+.third-width{
+    width: calc(100% / 3);
+}
+
+.main-width{
+    width: calc((100% /3) * 2);
+}
+
+.my-messages{
+    height: 50px;
+    width: 40%;
+}
+
+.sent-message{
+    background-color: rgb(213, 249, 186);
+}
+
+.received-message{
+    background-color: white;
+}
+
+.sub-text{
+    font-size: .7rem;
+}
+
+.my-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.my-names{
+    font-size: .8rem;
+}
+
+div#desktop-notify{
+    height: 60px;
+    background-color: rgb(142, 218, 252);
+}
+
+div#desktop-notify i{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    background-color: white;
+    color: rgb(142, 218, 252);
+}
+
+
+div#chats{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+div#chats li{
+    height: 9vh;
+}
+
+div#chats li:hover{
+    background-color: grey;
 }
