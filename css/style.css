@@ -34,6 +34,7 @@ div#main-messages{
     height: 82vh;
     background-image: url(../img/mine.jpg);
     border-right: 7px solid rgb(234, 234, 234);
+    overflow-y: auto;
 }
 div#main-footer{
     height: 8vh;
@@ -63,6 +64,10 @@ div#main-footer{
 
 .sub-text{
     font-size: .7rem;
+}
+
+.date-text{
+    font-size: .5rem;
 }
 
 .my-avatar{

@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
 
-                                <div class="my-date sub-text text-end">{{element.messages[0].date}}</div>
+                                <div class="my-date date-text text-end">{{element.messages[0].date}}</div>
 
                             </li>
                         </ul>
@@ -106,27 +106,21 @@
 
                 <div class="position-relative main-width" id="main-messages">
 
-                    <div class="px-4 py-5 clearfix">
-                        <!-- <div class="position-relative my-messages sent-message d-flex py-2">
-                            <p class="my-names">{{contacts[0].messages[0].message}}</p>
-                            <span class="sub-text text-secondary date-text position-absolute bottom-0 right-0">{{contacts[0].messages[0].date}}</span>
-                        </div> -->
+                    <div class="px-4 py-5 " >
+                        <div class="d-flex flex-nowrap mb-2" v-for="message in contacts[newIndex].messages" :class="(message.status==`sent`) ? `justify-content-end` : ``">
+                            <div class="my-names rounded-3 p-2 d-flex justify-content-between" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`">
+                                <p class="my-names">{{message.message}}</p>
+                                <p class="date-text align-self-end">{{message.date}}</p>
+                            </div>
+                        </div>
 
-                        <p class="my-names" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`" 
-                        v-for="message in contacts[newIndex].messages" >
-                            <span>{{message.message}}</span>
-                            <span>{{message.date}}</span>
-                        </p>
-
-                        <div></div>
-                        <div></div>
 
                     </div>
 
-                    <div class="position-absolute bottom-0 left-0 w-100 d-flex justify-content-evenly align-items-center py-2" id="main-footer">
+                    <div class="position-fixed main-width bottom-0 left-0 d-flex justify-content-evenly align-items-center py-2" id="main-footer">
 
                         <i class="fa-regular fa-face-smile mx-3"></i>
-                        <input type="text" class="form-control sub-text" placeholder="Scrivi un messaggio">
+                        <input v-model="newMessage" @keydown.enter="addToMessages(newMessage)" type="text" class="form-control sub-text" placeholder="Scrivi un messaggio">
                         <i class="fa-light fa-microphone mx-3"></i>
                     </div>
 

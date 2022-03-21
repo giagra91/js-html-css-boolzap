@@ -3,6 +3,10 @@ let app = new Vue(
         el: `#app`,
         data: {
             newIndex : 0,
+            newMessage : "",
+            currentDate : new Date(),
+            // + "/" + Date.getMonth() + "/" + Date.getFullYear() 
+            // + " " + Date.getHours() + ":" + Date.getMinutes() + ":" + Date.getSeconds(),
             contacts: [
                 {
                     name: 'Michele',
@@ -171,8 +175,28 @@ let app = new Vue(
         methods : {
             changeIndex(index){
                 this.newIndex=index;
-            }
+            },
+            addToMessages(message){
+                if (message !== ""){
+                    this.contacts[this.newIndex].messages.push({
+                        message : this.newMessage,
+                        date : this.currentDate,
+                        status : `sent`
+                    })
+                    setTimeout(() => {
+                        this.contacts[this.newIndex].messages.push({
+                            message : "ok",
+                            date : this.currentDate,
+                            status : `received`
+                        })
+                    }, 1000)
+                }
+                this.newMessage = ""
+            },
         },
+        // Funzione updated per verifica dati e test funzioni
+        updated(){
+        }
     }
 )
 
