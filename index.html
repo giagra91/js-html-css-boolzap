@@ -38,7 +38,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="d-flex justify-content-between align-items-center">
                                 <img src="img/avatar_7.jpg" alt="" class="img-fluid my-avatar">
-                                <span class="fw-bold my-names">{{contacts[0].name}}</span>
+                                <span class="fw-bold my-names">Gianfranco</span>
                             </div>
                             <div class="text-secondary">
                                 <i class="fa-solid fa-circle-notch"></i>
@@ -52,8 +52,8 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <img src="img/avatar_7.jpg" alt="" class="img-fluid my-avatar">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <span class="fw-bold my-names">{{contacts[0].name}}</span>
-                                    <span class="sub-text">Ultimo accesso {{contacts[0].messages[0].date}}</span>
+                                    <span class="fw-bold my-names">{{contacts[newIndex].name}}</span>
+                                    <span class="sub-text">Ultimo accesso {{contacts[newIndex].messages[0].date}}</span>
                                 </div>
                             </div>
                             <div class="text-secondary">
@@ -74,7 +74,6 @@
                         <div class="d-flex flex-column justify-content-center">
                             <span class="fw-bold my-names">Ricevi notifiche di nuovi messaggi</span>
                             <a href="#" class="text-secondary sub-text">Attiva notifiche desktop</a>
-                            <button @click="check()">1</button>
                         </div>
                     </div>
 
@@ -87,10 +86,10 @@
 
                     <div class="bg-light" id="chats">
                         <ul class="list-unstyled">
-                            <li v-for="(element, index) in contacts" class="px-1 py-2">
+                            <li v-for="(element, index) in contacts" @click="changeIndex(index)" class="px-1 py-2">
                                 <div class="my-info d-flex justify-content-start">
                                     <img :src="`img/avatar` + element.avatar + `.jpg`" alt="" class="img-fluid my-avatar">
-                                    <div class="d-flex flex-column justify-content-start">
+                                    <div class="d-flex flex-column justify-content-start ps-2">
                                         <span class="fw-bold my-names">{{element.name}}</span>
                                         <span class="sub-text">{{element.messages[0].message}}</span>
                                     </div>
@@ -107,17 +106,17 @@
 
                 <div class="position-relative main-width" id="main-messages">
 
-                    <div class="px-4 py-5 ">
-                        <div class="position-relative my-messages sent-message d-flex py-2">
+                    <div class="px-4 py-5 clearfix">
+                        <!-- <div class="position-relative my-messages sent-message d-flex py-2">
                             <p class="my-names">{{contacts[0].messages[0].message}}</p>
                             <span class="sub-text text-secondary date-text position-absolute bottom-0 right-0">{{contacts[0].messages[0].date}}</span>
-                        </div>
+                        </div> -->
 
-                        <ul class="list-unstyled">
-                            <li v-for="(element,index) in contacts.messages">
-                                <p class="my-names">{{index}}</p>
-                            </li>
-                        </ul>
+                        <p class="my-names" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`" 
+                        v-for="message in contacts[newIndex].messages" >
+                            <span>{{message.message}}</span>
+                            <span>{{message.date}}</span>
+                        </p>
 
                         <div></div>
                         <div></div>

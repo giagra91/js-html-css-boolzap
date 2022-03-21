@@ -2,6 +2,7 @@ let app = new Vue(
     {
         el: `#app`,
         data: {
+            newIndex : 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -168,9 +169,8 @@ let app = new Vue(
             
         },
         methods : {
-            check(){
-                console.log(this.contacts[0].messages[0].message)
-                console.warn(this.contacts[0].messages.length)
+            changeIndex(index){
+                this.newIndex=index;
             }
         },
     }
