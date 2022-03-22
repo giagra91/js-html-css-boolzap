@@ -4,7 +4,7 @@ let app = new Vue(
         data: {
             newIndex : 0,
             newMessage : "",
-            currentDate : new Date(),
+            currentDate : new Date().getDate(),
             nameToSearch : "",
             newArray : [],
             contacts: [
@@ -176,8 +176,8 @@ let app = new Vue(
             changeIndex(index){
                 this.newIndex=index;
             },
-            addToMessages(message){
-                if (message !== ""){
+            addToMessages(newMessage){
+                if (newMessage !== ""){
                     this.contacts[this.newIndex].messages.push({
                         message : this.newMessage,
                         date : this.currentDate,
@@ -196,18 +196,16 @@ let app = new Vue(
             searchName(){
                 console.log(this.nameToSearch)
                 this.newArray = this.contacts.filter((element) => {
-                    if (element.name.toLowerCase() !== this.nameToSearch.toLowerCase()) {
-                        console.log(`trovato`)
+                    if (element.name.toLowerCase().trim() !== this.nameToSearch.toLowerCase().trim()) {
                         element.visible= false;
                     } else {
                         console.log(`trovato`)
                         element.visible= true;
                     }
             });
-                console.warn(this.newArray)
             },
             deleteMessage(index){
-                console.log(this.contacts[this.newIndex].messages[index].message)
+                // console.log(this.contacts[this.newIndex].messages[index].message)
                 this.contacts[this.newIndex].messages.splice(index,1)
                 document.getElementsByClassName(`my-dropdown-menu`)[index].classList.remove(`d-block`);
             },
@@ -220,8 +218,8 @@ let app = new Vue(
                 }
                 return message
             },
-            takeDate(date){
-                let myTime = date.split(" ");
+            takeDate(myDate){
+                let myTime = myDate.split(" ");
                 return myTime[0] + ` alle ` + myTime[1]
             }
         },
