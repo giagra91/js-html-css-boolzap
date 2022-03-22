@@ -5,8 +5,7 @@ let app = new Vue(
             newIndex : 0,
             newMessage : "",
             currentDate : new Date(),
-            // + "/" + Date.getMonth() + "/" + Date.getFullYear() 
-            // + " " + Date.getHours() + ":" + Date.getMinutes() + ":" + Date.getSeconds(),
+            nameToSearch : "",
             contacts: [
                 {
                     name: 'Michele',
@@ -193,9 +192,21 @@ let app = new Vue(
                 }
                 this.newMessage = ""
             },
+            searchName(){
+                console.log(this.nameToSearch)
+            },
+            deleteMessage(index){
+                console.log(this.contacts[this.newIndex].messages[index].message)
+                this.contacts[this.newIndex].messages.splice(index,1)
+                document.getElementsByClassName(`my-dropdown-menu`)[index].classList.remove(`d-block`);
+            },
+            showDropdown(index){
+                document.getElementsByClassName(`my-dropdown-menu`)[index].classList.toggle(`d-block`);
+            }
         },
         // Funzione updated per verifica dati e test funzioni
         updated(){
+            
         }
     }
 )

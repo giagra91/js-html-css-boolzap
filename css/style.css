@@ -14,6 +14,7 @@ main{
 
 section#app{
     width: 960px;
+    min-width: 750px;
     height: 90vh;
     top: 50%;
     left: 50%;
@@ -96,15 +97,41 @@ div#desktop-notify i{
 }
 
 
-div#chats{
+div#contacts-list{
     height: 100%;
     overflow-y: scroll;
 }
 
-div#chats li{
+div#contacts-list li{
     height: 9vh;
 }
 
-div#chats li:hover{
-    background-color: grey;
+.active{
+    background-color: lightgray;
+}
+
+div#contacts-list li:hover{
+    background-color: lightgrey;
+}
+
+div.my-text-messages i.arrow-menu{
+    display: none;
+    cursor: pointer;
+}
+
+div.my-text-messages:hover i.arrow-menu{
+    display: block;
+}
+
+.my-dropdown-menu{
+    width: 100px;
+    height: 50px;
+    background-color: rgba(234, 234, 234, .7);
+    border-radius: 5px;
+    display: none;
+    z-index: 1;
+}
+
+.my-dropdown-menu li:hover{
+    background-color: lightgray;
 }
