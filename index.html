@@ -89,13 +89,13 @@
                             <li v-for="(element, index) in contacts" v-show="element.visible" :class="(index === newIndex) ? `active` : ``" @click="changeIndex(index)" class="px-1 py-2">
                                 <div class="my-info d-flex justify-content-start">
                                     <img :src="`img/avatar` + element.avatar + `.jpg`" alt="" class="img-fluid my-avatar">
-                                    <div class="d-flex flex-column justify-content-start ps-2">
-                                        <span class="fw-bold my-names">{{element.name}}</span>
+                                    <div class="d-flex flex-column ps-2">
+                                        <p class="fw-bold my-names m-0">{{element.name}}</p>
                                         <span class="sub-text">{{element.messages[element.messages.length-1].message}}</span>
                                     </div>
                                 </div>
 
-                                <div class="my-date date-text text-end">{{element.messages[0].date}}</div>
+                                <div class="my-date date-text text-end">hh.mm..ss</div>
 
                             </li>
                         </ul>
@@ -107,13 +107,13 @@
 
                     <div class="px-4 py-5 " >
                         <div class="my-text-messages d-flex flex-nowrap mb-2" v-for="(message, index) in contacts[newIndex].messages" :class="(message.status==`sent`) ? `justify-content-end` : ``">
-                            <div class="position-relative my-names rounded-3 p-2 d-flex justify-content-between" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`">
+                            <div class="my-pop-up position-relative my-names rounded-3 p-2 d-flex justify-content-between" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`">
                                 <p class="my-names m-0 py-1">{{message.message}}</p>
                                 <p class="date-text align-self-end m-0 py-1">{{message.date}}</p>
                                 <i @click="showDropdown(index)" class="arrow-menu fa-solid fa-angle-down position-absolute top-0 end-0 p-2"></i>
                                 <div class="my-dropdown-menu position-absolute top-50 end-0">
                                     <ul class="list-unstyled text-center m-0">
-                                        <li><span @click="deleteMessage(index)" class="fw-bold">Cancella messaggio</span></li>
+                                        <li><span @click="deleteMessage(index)" class="fw-bold sub-text">Cancella messaggio</span></li>
                                     </ul>
                                 </div>
                             </div>

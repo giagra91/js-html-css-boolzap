@@ -114,12 +114,12 @@ div#contacts-list li:hover{
     background-color: lightgrey;
 }
 
-div.my-text-messages i.arrow-menu{
+div.my-pop-up i.arrow-menu{
     display: none;
     cursor: pointer;
 }
 
-div.my-text-messages:hover i.arrow-menu{
+div.my-pop-up:hover i.arrow-menu{
     display: block;
 }
 
