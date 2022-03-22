@@ -6,6 +6,7 @@ let app = new Vue(
             newMessage : "",
             currentDate : new Date(),
             nameToSearch : "",
+            newArray : [],
             contacts: [
                 {
                     name: 'Michele',
@@ -194,6 +195,16 @@ let app = new Vue(
             },
             searchName(){
                 console.log(this.nameToSearch)
+                this.newArray = this.contacts.filter((element) => {
+                    if (element.name.toLowerCase() !== this.nameToSearch.toLowerCase()) {
+                        console.log(`trovato`)
+                        element.visible= false;
+                    } else {
+                        console.log(`trovato`)
+                        element.visible= true;
+                    }
+            });
+                console.warn(this.newArray)
             },
             deleteMessage(index){
                 console.log(this.contacts[this.newIndex].messages[index].message)
@@ -202,6 +213,16 @@ let app = new Vue(
             },
             showDropdown(index){
                 document.getElementsByClassName(`my-dropdown-menu`)[index].classList.toggle(`d-block`);
+            },
+            cutMessage(message){
+                if(message.length > 20){
+                    return message.substring(0,19)
+                }
+                return message
+            },
+            takeDate(date){
+                let myTime = date.split(" ");
+                return myTime[0] + ` alle ` + myTime[1]
             }
         },
         // Funzione updated per verifica dati e test funzioni

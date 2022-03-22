@@ -53,7 +53,9 @@
                                 <img src="img/avatar_7.jpg" alt="" class="img-fluid my-avatar">
                                 <div class="d-flex flex-column justify-content-center ps-2">
                                     <span class="fw-bold my-names">{{contacts[newIndex].name}}</span>
-                                    <span class="sub-text">Ultimo accesso {{contacts[newIndex].messages[contacts[newIndex].messages.length-1].date}}
+                                    <span class="sub-text">
+                                        Ultimo accesso il {{takeDate(contacts[newIndex].messages[contacts[newIndex].messages.length-1].date)}}
+                                    </span>
                                 </div>
                             </div>
                             <div class="text-secondary">
@@ -80,23 +82,25 @@
                     <div class="bg-light p-1">
                         <div class="input-group">
                             <span class="input-group-text bg-light text-secondary" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input @keydown="searchName()" v-model="nameToSearch" type="text" class="form-control sub-text" placeholder="Cerca e inizia una nuova chat">
+                            <input @keyup="searchName()" v-model="nameToSearch" type="text" class="form-control sub-text" placeholder="Cerca e inizia una nuova chat">
                         </div>
                     </div>
 
                     <div class="bg-light" id="contacts-list">
                         <ul class="list-unstyled">
-                            <li v-for="(element, index) in contacts" v-show="element.visible" :class="(index === newIndex) ? `active` : ``" @click="changeIndex(index)" class="px-1 py-2">
-                                <div class="my-info d-flex justify-content-start">
-                                    <img :src="`img/avatar` + element.avatar + `.jpg`" alt="" class="img-fluid my-avatar">
-                                    <div class="d-flex flex-column ps-2">
-                                        <p class="fw-bold my-names m-0">{{element.name}}</p>
-                                        <span class="sub-text">{{element.messages[element.messages.length-1].message}}</span>
+                            <li v-for="(element, index) in contacts" v-show="element.visible" :class="(index === newIndex) ? `active` : ``" @click="changeIndex(index)" class="p-2">
+                                <div class="my-info d-flex justify-content-between position-relative">
+                                    <div class="d-flex ">
+                                        <img :src="`img/avatar` + element.avatar + `.jpg`" alt="" class="img-fluid my-avatar">
+                                        <div class="ps-2">
+                                            <p class="fw-bold my-names m-0">{{element.name}}</p>
+                                            <span class="sub-text">{{cutMessage(element.messages[element.messages.length-1].message)}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="position-absolute bottom-0 end-0 my-date date-text text-end">
+                                        {{element.messages[element.messages.length-1].date}}
                                     </div>
                                 </div>
-
-                                <div class="my-date date-text text-end">hh.mm..ss</div>
-
                             </li>
                         </ul>
                     </div>
@@ -111,10 +115,10 @@
                                 <p class="my-names m-0 py-1">{{message.message}}</p>
                                 <p class="date-text align-self-end m-0 py-1">{{message.date}}</p>
                                 <i @click="showDropdown(index)" class="arrow-menu fa-solid fa-angle-down position-absolute top-0 end-0 p-2"></i>
-                                <div class="my-dropdown-menu position-absolute top-50 end-0">
-                                    <ul class="list-unstyled text-center m-0">
-                                        <li><span @click="deleteMessage(index)" class="fw-bold sub-text">Cancella messaggio</span></li>
-                                    </ul>
+                                <div class="my-dropdown-menu position-absolute text-center top-50 end-0">
+                                    <span @click="deleteMessage(index)" class="delete-message fw-bold sub-text">
+                                        Cancella messaggio
+                                    </span>
                                 </div>
                             </div>
                         </div>
