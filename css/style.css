@@ -132,6 +132,10 @@ div.my-pop-up:hover i.arrow-menu{
     z-index: 1;
 }
 
-.my-dropdown-menu li:hover{
+.my-dropdown-menu span{
+    cursor: pointer;
+}
+
+.my-dropdown-menu:hover{
     background-color: lightgray;
 }
