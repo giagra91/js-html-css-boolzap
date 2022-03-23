@@ -132,7 +132,8 @@ div.my-pop-up:hover i.arrow-menu{
     z-index: 1;
 }
 
-.my-dropdown-menu p{
+.my-dropdown-menu p,
+div#main-footer i.send-message{
     cursor: pointer;
 }
 

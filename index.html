@@ -140,7 +140,7 @@
 
                         <i class="fa-regular fa-face-smile px-3"></i>
                         <input v-model="newMessage" @keydown.enter="addToMessages(contacts, newMessage, newIndex)" type="text" class="form-control sub-text" placeholder="Scrivi un messaggio">
-                        <i v-if="newMessage.trim() !== ``" class="fa-solid fa-circle-chevron-right px-3"></i>
+                        <i v-if="newMessage.trim() !== ``" @click="addToMessages(contacts, newMessage, newIndex)" class="send-message fa-solid fa-circle-chevron-right px-3"></i>
                         <i v-else class="fa-solid fa-microphone px-3"></i>
                     </div>
 
