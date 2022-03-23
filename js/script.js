@@ -178,7 +178,7 @@ let app = new Vue(
             },
             // Funzione per aggiungere un messaggio ed avere la risposta
             addToMessages(contacts, newMessage,index){
-                if (newMessage !== ""){
+                if (newMessage.trim() !== ""){
                     contacts[index].messages.push({
                         message : newMessage,
                         date : dayjs().format('DD/MM/YYYY hh.mm'),
