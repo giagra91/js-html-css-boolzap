@@ -108,7 +108,7 @@
                                         </div>
                                     </div>
                                     <div class="position-absolute bottom-0 end-0 my-date date-text text-end"  v-if="element.messages.length > 0">
-                                        <span class="date-text">{{element.messages[element.messages.length-1].date}}</span>
+                                        <span class="date-text">{{takeHour(element.messages[element.messages.length-1].date)}}</span>
                                     </div>
                                     <div v-else></div>
                                 </div>
@@ -125,7 +125,7 @@
                         <div class="my-text-messages d-flex flex-nowrap mb-2" v-for="(message, index) in contacts[newIndex].messages" :class="(message.status==`sent`) ? `justify-content-end` : ``">
                             <div class="my-pop-up position-relative my-names rounded-3 p-2 d-flex justify-content-between" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`">
                                 <p class="my-names m-0 py-1">{{message.message}}</p>
-                                <p class="date-text align-self-end m-0 py-1">{{message.date}}</p>
+                                <p class="date-text align-self-end m-0 ps-2 py-1">{{message.date}}</p>
                                 <i @click="showDropdown(index)" class="arrow-menu fa-solid fa-angle-down position-absolute top-0 end-0 p-2"></i>
                                 <div class="my-dropdown-menu position-absolute text-center top-50 end-0">
                                     <p @click="deleteMessage(contacts, newIndex, index)" class="delete-message fw-bold sub-text">
@@ -140,7 +140,8 @@
 
                         <i class="fa-regular fa-face-smile px-3"></i>
                         <input v-model="newMessage" @keydown.enter="addToMessages(contacts, newMessage, newIndex)" type="text" class="form-control sub-text" placeholder="Scrivi un messaggio">
-                        <i class="fa-solid fa-microphone px-3"></i>
+                        <i v-if="newMessage.trim() !== ``" class="fa-solid fa-circle-chevron-right px-3"></i>
+                        <i v-else class="fa-solid fa-microphone px-3"></i>
                     </div>
 
                 </div>

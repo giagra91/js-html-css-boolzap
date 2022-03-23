@@ -198,15 +198,16 @@ let app = new Vue(
             searchName(contacts, newName){
                 contacts.filter((element, index) => {
                     if (element.name.substring(0, newName.length).toLowerCase().trim() == newName.substring(0, this.length).toLowerCase().trim()) {
-                        this.newIndex=index
-                        console.log(`trovato`)
                         element.visible= true;
+                        this.newIndex=index;
+                        console.log(`trovato`)
                     } else if (newName.substring(0, this.length).toLowerCase().trim() == ""){
                         element.visible= true;
                     } else {
                         element.visible = false;
+                        
                     }
-            });
+                });
             },
             // Funzione cancella messaggio
             deleteMessage(contacts, mainIndex, index){
@@ -228,6 +229,10 @@ let app = new Vue(
             takeDate(myDate){
                 let myTime = myDate.split(" ");
                 return myTime[0] + ` alle ` + myTime[1]
+            },
+            takeHour(myDate){
+                let myTime = myDate.split(" ");
+                return myTime[1]
             }
         },
         // Updated per verifica dati e test funzioni
