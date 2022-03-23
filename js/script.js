@@ -181,13 +181,13 @@ let app = new Vue(
                 if (newMessage.trim() !== ""){
                     contacts[index].messages.push({
                         message : newMessage,
-                        date : dayjs().format('DD/MM/YYYY hh.mm'),
+                        date : dayjs().format('DD/MM/YYYY hh:mm:ss'),
                         status : `sent`
                     })
                     setTimeout(() => {
                         contacts[index].messages.push({
                             message : "ok",
-                            date : dayjs().format('DD/MM/YYYY hh.mm'),
+                            date : dayjs().format('DD/MM/YYYY hh:mm:ss'),
                             status : `received`
                         })
                     }, 1000)
