@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="bg-light" id="contacts-list">
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled m-0">
                             <li v-for="(element, index) in contacts" v-show="element.visible" :class="(index === newIndex) ? `active` : ``" 
                             @click="changeIndex(index)" class="p-2">
                                 <div class="my-info d-flex justify-content-between position-relative">
