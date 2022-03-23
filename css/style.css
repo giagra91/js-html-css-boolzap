@@ -139,3 +139,7 @@ div.my-pop-up:hover i.arrow-menu{
 .my-dropdown-menu:hover{
     background-color: lightgray;
 }
+
+.my-pop-up{
+    min-width: 40%;
+}

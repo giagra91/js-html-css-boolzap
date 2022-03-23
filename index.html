@@ -95,7 +95,7 @@
                     <div class="bg-light" id="contacts-list">
                         <ul class="list-unstyled m-0">
                             <li v-for="(element, index) in contacts" v-show="element.visible" :class="(index === newIndex) ? `active` : ``" 
-                            @click="changeIndex(index)" class="p-2">
+                            @click="changeIndex(index)" class="py-2 px-3">
                                 <div class="my-info d-flex justify-content-between position-relative">
                                     <div class="d-flex ">
                                         <img :src="`img/avatar` + element.avatar + `.jpg`" alt="" class="img-fluid my-avatar">
@@ -123,9 +123,9 @@
 
                     <div class="px-4 py-5 " >
                         <div class="my-text-messages d-flex flex-nowrap mb-2" v-for="(message, index) in contacts[newIndex].messages" :class="(message.status==`sent`) ? `justify-content-end` : ``">
-                            <div class="my-pop-up position-relative my-names rounded-3 p-2 d-flex justify-content-between" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`">
-                                <p class="my-names m-0 py-1">{{message.message}}</p>
-                                <p class="date-text align-self-end m-0 ps-2 py-1">{{message.date}}</p>
+                            <div class="my-pop-up position-relative my-names rounded-3 px-3 py-2 d-flex justify-content-between" :class="(message.status==`sent`) ? `sent-message text-end` : `received-message`">
+                                <p class="my-names m-0 ">{{message.message}}</p>
+                                <p class="date-text align-self-end m-0 px-2 pt-1 position-absolute bottom-0 end-0">{{message.date}}</p>
                                 <i @click="showDropdown(index)" class="arrow-menu fa-solid fa-angle-down position-absolute top-0 end-0 p-2"></i>
                                 <div class="my-dropdown-menu position-absolute text-center top-50 end-0">
                                     <p @click="deleteMessage(contacts, newIndex, index)" class="delete-message fw-bold sub-text">
