@@ -181,13 +181,13 @@ let app = new Vue(
                 if (newMessage.trim() !== ""){
                     contacts[index].messages.push({
                         message : newMessage,
-                        date : dayjs().format('DD/MM/YYYY hh:mm:ss'),
+                        date : dayjs().format('DD/MM/YYYY HH:mm:ss'),
                         status : `sent`
                     })
                     setTimeout(() => {
                         contacts[index].messages.push({
                             message : "ok",
-                            date : dayjs().format('DD/MM/YYYY hh:mm:ss'),
+                            date : dayjs().format('DD/MM/YYYY HH:mm:ss'),
                             status : `received`
                         })
                     }, 1000)
@@ -239,7 +239,7 @@ let app = new Vue(
         },
         // Updated per verifica dati e test funzioni
         updated(){
-            // console.log(this.nameToSearch.substring(0, this.length).toUpperCase())
+            // console.log(dayjs().format('DD/MM/YYYY hh:mm:ss'))
         }
     }
 )
