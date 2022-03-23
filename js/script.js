@@ -180,13 +180,13 @@ let app = new Vue(
                 if (newMessage !== ""){
                     this.contacts[this.newIndex].messages.push({
                         message : this.newMessage,
-                        date : 'DD/MM/YYYY hh:mm:ss',
+                        date : dayjs().format('DD/MM/YYYY hh.mm'),
                         status : `sent`
                     })
                     setTimeout(() => {
                         this.contacts[this.newIndex].messages.push({
                             message : "ok",
-                            date : 'DD/MM/YYYY hh:mm:ss',
+                            date : dayjs().format('DD/MM/YYYY hh.mm'),
                             status : `received`
                         })
                     }, 1000)
@@ -225,7 +225,6 @@ let app = new Vue(
         },
         // Funzione updated per verifica dati e test funzioni
         updated(){
-            
         }
     }
 )
