@@ -197,7 +197,7 @@ let app = new Vue(
             // Funzione per ricerca tra i contatti
             searchName(contacts, newName){
                 contacts.filter((element, index) => {
-                    if (element.name.substring(0, this.length).toLowerCase().trim() == newName.substring(0, this.length).toLowerCase().trim()) {
+                    if (element.name.substring(0, newName.length).toLowerCase().trim() == newName.substring(0, this.length).toLowerCase().trim()) {
                         this.newIndex=index
                         console.log(`trovato`)
                         element.visible= true;
