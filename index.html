@@ -88,13 +88,14 @@
                     <div class="bg-light p-1">
                         <div class="input-group">
                             <span class="input-group-text bg-light text-secondary" id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></span>
-                            <input @keyup="searchName()" v-model="nameToSearch" type="text" class="form-control sub-text" placeholder="Cerca e inizia una nuova chat">
+                            <input @keyup="searchName(contacts, nameToSearch)" v-model="nameToSearch" type="text" class="form-control sub-text" placeholder="Cerca e inizia una nuova chat">
                         </div>
                     </div>
 
                     <div class="bg-light" id="contacts-list">
                         <ul class="list-unstyled">
-                            <li v-for="(element, index) in contacts" v-show="element.visible" :class="(index === newIndex) ? `active` : ``" @click="changeIndex(index)" class="p-2">
+                            <li v-for="(element, index) in contacts" v-show="element.visible" :class="(index === newIndex) ? `active` : ``" 
+                            @click="changeIndex(index)" class="p-2">
                                 <div class="my-info d-flex justify-content-between position-relative">
                                     <div class="d-flex ">
                                         <img :src="`img/avatar` + element.avatar + `.jpg`" alt="" class="img-fluid my-avatar">
@@ -127,7 +128,7 @@
                                 <p class="date-text align-self-end m-0 py-1">{{message.date}}</p>
                                 <i @click="showDropdown(index)" class="arrow-menu fa-solid fa-angle-down position-absolute top-0 end-0 p-2"></i>
                                 <div class="my-dropdown-menu position-absolute text-center top-50 end-0">
-                                    <p @click="deleteMessage(index)" class="delete-message fw-bold sub-text">
+                                    <p @click="deleteMessage(contacts, newIndex, index)" class="delete-message fw-bold sub-text">
                                         Cancella messaggio
                                     </p>
                                 </div>
@@ -138,7 +139,7 @@
                     <div class="position-fixed main-width bottom-0 left-0 d-flex justify-content-evenly align-items-center py-2" id="main-footer">
 
                         <i class="fa-regular fa-face-smile px-3"></i>
-                        <input v-model="newMessage" @keydown.enter="addToMessages(newMessage)" type="text" class="form-control sub-text" placeholder="Scrivi un messaggio">
+                        <input v-model="newMessage" @keydown.enter="addToMessages(contacts, newMessage, newIndex)" type="text" class="form-control sub-text" placeholder="Scrivi un messaggio">
                         <i class="fa-solid fa-microphone px-3"></i>
                     </div>
 

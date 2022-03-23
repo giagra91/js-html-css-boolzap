@@ -6,7 +6,6 @@ let app = new Vue(
             newMessage : "",
             currentDate : new Date().getDate(),
             nameToSearch : "",
-            newArray : [],
             contacts: [
                 {
                     name: 'Michele',
@@ -173,18 +172,20 @@ let app = new Vue(
             
         },
         methods : {
+            // Funzione per aggiornare il newIndex al click sulla singola chat
             changeIndex(index){
                 this.newIndex=index;
             },
-            addToMessages(newMessage){
+            // Funzione per aggiungere un messaggio ed avere la risposta
+            addToMessages(contacts, newMessage,index){
                 if (newMessage !== ""){
-                    this.contacts[this.newIndex].messages.push({
-                        message : this.newMessage,
+                    contacts[index].messages.push({
+                        message : newMessage,
                         date : dayjs().format('DD/MM/YYYY hh.mm'),
                         status : `sent`
                     })
                     setTimeout(() => {
-                        this.contacts[this.newIndex].messages.push({
+                        contacts[index].messages.push({
                             message : "ok",
                             date : dayjs().format('DD/MM/YYYY hh.mm'),
                             status : `received`
@@ -193,38 +194,45 @@ let app = new Vue(
                 }
                 this.newMessage = ""
             },
-            searchName(){
-                console.log(this.nameToSearch)
-                this.newArray = this.contacts.filter((element) => {
-                    if (element.name.toLowerCase().trim() !== this.nameToSearch.toLowerCase().trim()) {
-                        element.visible= false;
-                    } else {
+            // Funzione per ricerca tra i contatti
+            searchName(contacts, newName){
+                contacts.filter((element, index) => {
+                    if (element.name.substring(0, this.length).toLowerCase().trim() == newName.substring(0, this.length).toLowerCase().trim()) {
+                        this.newIndex=index
                         console.log(`trovato`)
                         element.visible= true;
+                    } else if (newName.substring(0, this.length).toLowerCase().trim() == ""){
+                        element.visible= true;
+                    } else {
+                        element.visible = false;
                     }
             });
             },
-            deleteMessage(index){
-                // console.log(this.contacts[this.newIndex].messages[index].message)
-                this.contacts[this.newIndex].messages.splice(index,1)
+            // Funzione cancella messaggio
+            deleteMessage(contacts, mainIndex, index){
+                contacts[mainIndex].messages.splice(index,1)
                 document.getElementsByClassName(`my-dropdown-menu`)[index].classList.remove(`d-block`);
             },
+            // Funzione per mostrare il dropdown menu sui messaggi
             showDropdown(index){
                 document.getElementsByClassName(`my-dropdown-menu`)[index].classList.toggle(`d-block`);
             },
+            // Funzione per troncare i messaggi troppo lunghi da mostrare nella lista contatti
             cutMessage(message){
                 if(message.length > 20){
                     return message.substring(0,19)
                 }
                 return message
             },
+            // Funzione per recuperare la data da inserire all'ultimo accesso nella sezione di destra
             takeDate(myDate){
                 let myTime = myDate.split(" ");
                 return myTime[0] + ` alle ` + myTime[1]
             }
         },
-        // Funzione updated per verifica dati e test funzioni
+        // Updated per verifica dati e test funzioni
         updated(){
+            // console.log(this.nameToSearch.substring(0, this.length).toUpperCase())
         }
     }
 )
