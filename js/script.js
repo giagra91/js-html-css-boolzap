@@ -180,13 +180,13 @@ let app = new Vue(
                 if (newMessage !== ""){
                     this.contacts[this.newIndex].messages.push({
                         message : this.newMessage,
-                        date : this.currentDate,
+                        date : 'DD/MM/YYYY hh:mm:ss',
                         status : `sent`
                     })
                     setTimeout(() => {
                         this.contacts[this.newIndex].messages.push({
                             message : "ok",
-                            date : this.currentDate,
+                            date : 'DD/MM/YYYY hh:mm:ss',
                             status : `received`
                         })
                     }, 1000)

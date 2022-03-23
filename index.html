@@ -54,7 +54,7 @@
                                 <div class="d-flex flex-column justify-content-center ps-2">
                                     <span class="fw-bold my-names">{{contacts[newIndex].name}}</span>
                                     <span class="sub-text" v-if="contacts[newIndex].messages.length > 0">
-                                        Ultimo accesso il {{contacts[newIndex].messages[contacts[newIndex].messages.length-1].date}}
+                                        Ultimo accesso il {{takeDate(contacts[newIndex].messages[contacts[newIndex].messages.length-1].date)}}
                                     </span>
                                     <span v-else></span>
                                 </div>
@@ -124,9 +124,9 @@
                                 <p class="date-text align-self-end m-0 py-1">{{message.date}}</p>
                                 <i @click="showDropdown(index)" class="arrow-menu fa-solid fa-angle-down position-absolute top-0 end-0 p-2"></i>
                                 <div class="my-dropdown-menu position-absolute text-center top-50 end-0">
-                                    <span @click="deleteMessage(index)" class="delete-message fw-bold sub-text">
+                                    <p @click="deleteMessage(index)" class="delete-message fw-bold sub-text">
                                         Cancella messaggio
-                                    </span>
+                                    </p>
                                 </div>
                             </div>
                         </div>
