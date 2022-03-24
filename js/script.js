@@ -4,7 +4,6 @@ let app = new Vue(
         data: {
             newIndex : 0,
             newMessage : "",
-            currentDate : new Date().getDate(),
             nameToSearch : "",
             contacts: [
                 {

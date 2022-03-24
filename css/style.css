@@ -32,7 +32,7 @@ div#aside-messages{
 }
 
 div#main-messages{
-    height: 82vh;
+    height: 74vh;
     background-image: url(../img/mine.jpg);
     border-right: 7px solid rgb(234, 234, 234);
     overflow-y: auto;
